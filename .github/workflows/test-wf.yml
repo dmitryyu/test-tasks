@@ -31,6 +31,7 @@ jobs:
           #gh_pages: gh_pages # BRANCH NAME you like
           #subfolder: docs  # Level 1 Folder Structure you like
           tool_name: testng # Level 2 Folder Structure you like
+          token: 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
           #workflow_name: ${{ github.workflow }} # Level 3 Folder Structure you like
           #env: QA # Level 4 Folder Structure you like
         #uses: actions/upload-artifact@v2
