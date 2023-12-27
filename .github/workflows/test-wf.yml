@@ -2,6 +2,7 @@ name: Demo Workflow
 on:  workflow-dispatch
 jobs:
   test-ap:
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Pull Docker image
