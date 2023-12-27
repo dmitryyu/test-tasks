@@ -29,6 +29,12 @@ jobs:
           htmlFile: ./target/surefire-reports/index.html
           outputFile: ./results.pdf
           pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+      - name: Publish test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: testng-results
+          path: ./results.pdf
+
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
 #        with:
 #          test_results: surefire-reports
@@ -39,7 +45,3 @@ jobs:
 #          token: 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
 #          #workflow_name: ${{ github.workflow }} # Level 3 Folder Structure you like
 #          #env: QA # Level 4 Folder Structure you like
-#        #uses: actions/upload-artifact@v2
-#        #with:
-#        #  name: testng-results
-#        #  path: target/surefire-reports/testng-results.xml
