@@ -1,7 +1,11 @@
 package com.test;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 public class Main {
-	public static void main(String[] args) {
-		System.out.println("Hello world!");
+	@Test
+	public void test1() {
+		Assert.assertTrue(true);
 	}
 }

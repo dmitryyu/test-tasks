@@ -22,7 +22,7 @@ jobs:
         with:
           maven-version: 3.8.2
       - run: mvn clean install -DskipTests
-      - run: mvn exec:java -Dexec.mainClass="com.test.Main"
+      - run: mvn clean test
       #- name: Generate test results
       #uses: actions/upload-artifact@v2
       #with:
