@@ -1,5 +1,5 @@
 name: Demo Workflow
-on:  workflow_dispatch
+on: workflow_dispatch
 jobs:
   test-app:
     name: Run tests
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
-          java-version: '21
+          java-version: '21'
       - run: java Main.java
       - name: Set up Maven
         uses: stCarolas/setup-maven@v4.5
