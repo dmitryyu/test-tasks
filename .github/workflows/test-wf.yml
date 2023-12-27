@@ -24,8 +24,11 @@ jobs:
       - run: mvn clean install -DskipTests
       - run: mvn clean test
       - name: Generate test results
-        if: always()
-        uses: jasmaa/testng-cloudwatch-metrics-action@main
+        uses: LukaszLapaj/html-to-pdf-action@master
+        with:
+          htmlFile: ./target/surefire-reports/index.html
+          outputFile: ./results.pdf
+          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
 #        with:
 #          test_results: surefire-reports
