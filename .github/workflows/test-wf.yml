@@ -21,6 +21,7 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.8.2
+      - run: mvn clean install -DskipTests
       - run: mvn exec:java -Dexec.mainClass="com.test.Main"
       #- name: Generate test results
       #uses: actions/upload-artifact@v2
