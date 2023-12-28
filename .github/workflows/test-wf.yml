@@ -29,9 +29,9 @@ jobs:
         if: always()
         with:
           files: |
-            test-results/**/*.xml
-            test-results/**/*.trx
-            test-results/**/*.json
+            ./target/surefire-reports/**/*.xml
+            ./target/surefire-reports/**/*.trx
+            ./target/surefire-reports/**/*.json
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
 #        with:
 #          test_results: surefire-reports
