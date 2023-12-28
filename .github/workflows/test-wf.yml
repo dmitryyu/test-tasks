@@ -23,18 +23,15 @@ jobs:
           maven-version: 3.8.2
       - run: mvn clean install -DskipTests
       - run: mvn clean test
-      - name: Generate test results
-        uses: LukaszLapaj/html-to-pdf-action@master
+#      - name: Generate test result
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
         with:
-          htmlFile: ./target/surefire-reports/index.html
-          outputFile: ./results.pdf
-          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
-      - name: Publish test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: testng-results
-          path: ./results.pdf
-
+          files: |
+            test-results/**/*.xml
+            test-results/**/*.trx
+            test-results/**/*.json
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
 #        with:
 #          test_results: surefire-reports
@@ -45,3 +42,9 @@ jobs:
 #          token: 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
 #          #workflow_name: ${{ github.workflow }} # Level 3 Folder Structure you like
 #          #env: QA # Level 4 Folder Structure you like
+
+#      - name: Publish test results
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: testng-results
+#          path: ./results.pdf
