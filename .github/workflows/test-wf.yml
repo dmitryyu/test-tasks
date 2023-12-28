@@ -24,29 +24,14 @@ jobs:
       - run: mvn clean install -DskipTests
       - run: mvn clean test
 #      - name: Generate test result
-#      - name: Publish Test Results
-      - name: Checkout gh-pages
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages # branch name
-          path: gh-pages-dir # checkout path
-      - name: HTML Report
-        if: always()
-        uses: mgrybyk/html-trend-report-action@v1
-        id: html-report # used in comment to PR
-        with:
-          report_id: 'TestNg Report'
-          gh_pages: 'gh-pages-dir'
-          report_dir: './target/surefire-reports/'
-      - name: Git Commit and Push Action
-        uses: mgrybyk/git-commit-pull-push-action@v1
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          repository: gh-pages-dir
-          branch: gh-pages
-          pull_args: --rebase -X ours
+          files: |
+            ./target/surefire-reports/junitreports/**/*.xml
+            ./target/surefire-reports/junitreports/**/*.trx
+            ./target/surefire-reports/junitreports/**/*.json
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
 #        with:
 #          test_results: surefire-reports
