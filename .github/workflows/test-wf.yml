@@ -30,7 +30,7 @@ jobs:
         uses: mgrybyk/html-trend-report-action@v1
         id: html-report # used in comment to PR
         with:
-          report_id: 'Jacoco Report'
+          report_id: 'TestNg Report'
           gh_pages: 'gh-pages-dir'
           report_dir: './target/surefire-reports/'
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
