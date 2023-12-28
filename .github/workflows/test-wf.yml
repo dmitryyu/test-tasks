@@ -25,6 +25,13 @@ jobs:
       - run: mvn clean test
 #      - name: Generate test result
 #      - name: Publish Test Results
+      - name: Checkout gh-pages
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages # branch name
+          path: gh-pages-dir # checkout path
       - name: HTML Report
         if: always()
         uses: mgrybyk/html-trend-report-action@v1
