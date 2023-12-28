@@ -24,14 +24,15 @@ jobs:
       - run: mvn clean install -DskipTests
       - run: mvn clean test
 #      - name: Generate test result
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
+#      - name: Publish Test Results
+      - name: HTML Report
         if: always()
+        uses: mgrybyk/html-trend-report-action@v1
+        id: html-report # used in comment to PR
         with:
-          files: |
-            ./target/surefire-reports/**/*.xml
-            ./target/surefire-reports/**/*.trx
-            ./target/surefire-reports/**/*.json
+          report_id: 'Jacoco Report'
+          gh_pages: 'gh-pages-dir'
+          report_dir: './target/surefire-reports/'
 #        uses: PavanMudigonda/html-reporter-github-pages@v1.2
 #        with:
 #          test_results: surefire-reports
